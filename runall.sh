@@ -4,7 +4,7 @@
 #sudo lsof -i tcp:8080 &&  sudo lsof -i tcp:9001
 
 jenkins_port=8080
-sonar_port=9001
+sonar_port=15010
 
 docker pull jenkins:2.60.3
 docker pull sonarqube:6.3.1
@@ -21,7 +21,7 @@ docker stop mysonar myjenkins
 docker build --no-cache  -t myjenkins .
 
 
-docker run  -p ${sonar_port}:9000 --rm --name mysonar sonarqube:6.3.1 &
+docker run  -p ${sonar_port}:15010 --rm --name mysonar sonarqube:6.3.1 &
 
 IP=$(ifconfig en0 | awk '/ *inet /{print $2}')
 
